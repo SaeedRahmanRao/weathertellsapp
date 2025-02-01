@@ -25,8 +25,8 @@ export const viewport: Viewport = {
 // Site configuration
 export const siteConfig = {
   url: 'https://weatherly18.netlify.app/',
-  name: 'Weatherly',
-  title: 'Weatherly: Real-Time Weather Updates & Forecasts',
+  name: 'SkyCast',
+  title: 'SkyCast: Real-Time Weather Updates & Forecasts',
   description:
     'Get accurate weather forecasts, real-time updates, air quality data, and detailed weather information for any location worldwide. Features interactive maps, hourly forecasts, and comprehensive weather metrics using OpenWeather API.',
   keywords:

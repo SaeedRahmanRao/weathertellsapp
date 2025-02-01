@@ -14,7 +14,7 @@ const Footer = memo(
     className = '',
     authorName = 'Saeed ur Rahman',
     githubUsername = 'SaeedRahmanRao',
-    repoUrl = 'Advanced-weather-app-nextjs',
+    repoUrl = 'weathertellsapp.git',
   }: FooterProps) => {
     const currentYear = new Date().getFullYear();
     const githubProfileUrl = `https://github.com/${githubUsername}`;
@@ -22,21 +22,13 @@ const Footer = memo(
 
     return (
       <footer
-        className={`w-full bg-background border-t border-border/40 mt-auto ${className}`}
+        className={`w-full bg-gray-800 border-t border-gray-700 mt-auto ${className}`}
         role="contentinfo"
         aria-label="Site footer"
       >
         <div className="container mx-auto px-4 py-3">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-400">
             <span className="flex items-center gap-1">
-              {/* <span>Made by</span>
-              <span
-                className="text-red-500 inline-flex items-center"
-                role="img"
-                aria-label="love"
-              >
-                <span className="animate-pulse">❤️</span>
-              </span> */}
               <span>Made by</span>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -44,7 +36,7 @@ const Footer = memo(
                     href={githubProfileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-primary hover:text-primary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm"
+                    className="font-medium text-blue-500 hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-sm"
                     aria-label={`Visit ${authorName}'s GitHub profile`}
                   >
                     {authorName}
@@ -62,7 +54,7 @@ const Footer = memo(
                   href={githubRepoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-3 py-1 rounded-md hover:bg-primary/10 text-primary hover:text-primary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  className="flex items-center gap-1 px-3 py-1 rounded-md hover:bg-blue-500 text-blue-500 hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   aria-label="View source code on GitHub"
                 >
                   <Github className="h-4 w-4" aria-hidden="true" />

@@ -7,6 +7,8 @@ import ClientMap from '@/components/views/client-map';
 import CurrentWeatherCard from '@/components/views/current-weather';
 import WindPressureCard from '@/components/views/wind-pressure';
 import HourlyForecast from '@/components/views/hourly-forecast';
+import Compass from './compass';
+import WindPressureGraph from './wind-pressure-graph';
 
 interface WeatherDashboardProps {
   weatherData: WeatherData;
@@ -34,13 +36,14 @@ const WeatherDashboard: React.FC<WeatherDashboardProps> = ({ weatherData, unit }
           forecast={forecast}
           unit={unit}
         />
+        <AirPollutionChart data={airPollution} />
         <div className="grid grid-rows-2 gap-4">
           <WindPressureCard currentWeather={currentWeather} unit={unit} />
           <HourlyForecast forecast={hourlyForecastData} unit={unit} />
         </div>
-        <AirPollutionChart data={airPollution} />
-        <TemperatureHumidityChart data={forecast} unit={unit} />
         <DayDuration data={currentWeather} />
+        <TemperatureHumidityChart data={forecast} unit={unit} />
+        <Compass currentWeather={currentWeather} unit={unit} />
         <ClientMap
           center={[currentWeather.coord.lat, currentWeather.coord.lon]}
           zoom={10}

@@ -4,8 +4,8 @@ import React, { useMemo, memo } from 'react';
 import { ForecastResponse } from '@/types/weather';
 import { Thermometer, Droplets } from 'lucide-react';
 import {
-  Area,
-  AreaChart,
+  Line,
+  LineChart,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -97,7 +97,7 @@ const ChartComponent = memo(({ chartData, temperatureUnit }: ChartComponentProps
   return (
     <ResponsiveContainer width="100%" height="100%">
       <ChartContainer config={chartConfig}>
-        <AreaChart
+        <LineChart
           data={chartData}
           margin={{
             top: 10,
@@ -140,37 +140,25 @@ const ChartComponent = memo(({ chartData, temperatureUnit }: ChartComponentProps
               />
             )}
           />
-          <defs>
-            <linearGradient id="temperatureGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="var(--color-temperature)" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="var(--color-temperature)" stopOpacity={0.1} />
-            </linearGradient>
-            <linearGradient id="humidityGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="var(--color-humidity)" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="var(--color-humidity)" stopOpacity={0.1} />
-            </linearGradient>
-          </defs>
-          <Area
+          <Line
             yAxisId="temp"
             type="monotone"
             dataKey="temperature"
             stroke="var(--color-temperature)"
-            fill="url(#temperatureGradient)"
-            fillOpacity={0.4}
+            strokeWidth={2}
             aria-label="Temperature trend line"
             isAnimationActive={true}
           />
-          <Area
+          <Line
             yAxisId="humidity"
             type="monotone"
             dataKey="humidity"
             stroke="var(--color-humidity)"
-            fill="url(#humidityGradient)"
-            fillOpacity={0.4}
+            strokeWidth={2}
             aria-label="Humidity trend line"
             isAnimationActive={true}
           />
-        </AreaChart>
+        </LineChart>
       </ChartContainer>
     </ResponsiveContainer>
   );

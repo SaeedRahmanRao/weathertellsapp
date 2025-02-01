@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Line, Tooltip } from 'recharts';
 import { Sun } from 'lucide-react';
 
 interface DayDurationProps {
@@ -28,7 +28,9 @@ const DayDuration: React.FC<DayDurationProps> = ({ data }) => {
 
   const chartData = [
     { time: sunrise.getTime(), value: 0 },
+    { time: sunrise.getTime() + dayLength / 4, value: 0.5 },
     { time: sunrise.getTime() + dayLength / 2, value: 1 },
+    { time: sunrise.getTime() + (3 * dayLength) / 4, value: 0.5 },
     { time: sunset.getTime(), value: 0 },
   ];
 
@@ -65,12 +67,28 @@ const DayDuration: React.FC<DayDurationProps> = ({ data }) => {
                 tick={{ fontSize: 12 }}
               />
               <YAxis hide={true} />
+              <Tooltip
+                labelFormatter={(label) =>
+                  new Date(label).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })
+                }
+                formatter={(value) => (value === 1 ? 'Noon' : '')}
+              />
               <Area
                 type="monotone"
                 dataKey="value"
                 stroke="#FDB813"
                 fillOpacity={1}
                 fill="url(#sunGradient)"
+              />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#FDB813"
+                strokeWidth={2}
+                dot={false}
               />
             </AreaChart>
           </ResponsiveContainer>
